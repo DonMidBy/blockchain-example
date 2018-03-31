@@ -22,15 +22,3 @@ memory
 functional
 -
 
-/home/andy/blockchain_code/blockchain-example/blockchainCpp/blockchain.hpp
-block.hpp
-/home/andy/blockchain_code/blockchain-example/blockchainCpp/block.hpp
-
-/home/andy/blockchain_code/blockchain-example/blockchainCpp/main.cpp
-iostream
--
-memory
--
-blockchain.hpp
-/home/andy/blockchain_code/blockchain-example/blockchainCpp/blockchain.hpp
-

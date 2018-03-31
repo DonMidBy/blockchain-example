@@ -20,7 +20,8 @@ void Block::SetPrevBlock(Block *block){
 
 bool Block::IsValid(){
   string hashed = to_string(this->CreateHash());
-  if(hashed.at(0) == '1' && hashed.at(1) == '1'){
+  if(hashed.at(0) == '1' && hashed.at(1) == '1' && hashed.at(2) == '1' && hashed.at(3) == '1'
+     && hashed.at(5) == '1' && hashed.at(6) == '1' && hashed.at(7) == '1' ){
     return true;
   }
   else return false;
