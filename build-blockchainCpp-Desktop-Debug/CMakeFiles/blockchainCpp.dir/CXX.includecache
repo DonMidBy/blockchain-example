@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/andy/blockchain_code/blockchain-example/blockchainCpp/block.cpp
+block.hpp
+/home/andy/blockchain_code/blockchain-example/blockchainCpp/block.hpp
+chrono
+-
+iostream
+-
+
+/home/andy/blockchain_code/blockchain-example/blockchainCpp/block.hpp
+string
+-
+memory
+-
+functional
+-
+
+/home/andy/blockchain_code/blockchain-example/blockchainCpp/blockchain.hpp
+block.hpp
+/home/andy/blockchain_code/blockchain-example/blockchainCpp/block.hpp
+
+/home/andy/blockchain_code/blockchain-example/blockchainCpp/main.cpp
+iostream
+-
+memory
+-
+blockchain.hpp
+/home/andy/blockchain_code/blockchain-example/blockchainCpp/blockchain.hpp
+
