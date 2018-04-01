@@ -3,6 +3,7 @@
 
 CMakeFiles/blockchainCpp.dir/block.cpp.o: /home/andy/blockchain_code/blockchain-example/blockchainCpp/block.cpp
 CMakeFiles/blockchainCpp.dir/block.cpp.o: /home/andy/blockchain_code/blockchain-example/blockchainCpp/block.hpp
+CMakeFiles/blockchainCpp.dir/block.cpp.o: /home/andy/blockchain_code/blockchain-example/blockchainCpp/sha256.hpp
 
 CMakeFiles/blockchainCpp.dir/blockchain.cpp.o: /home/andy/blockchain_code/blockchain-example/blockchainCpp/block.hpp
 CMakeFiles/blockchainCpp.dir/blockchain.cpp.o: /home/andy/blockchain_code/blockchain-example/blockchainCpp/blockchain.cpp

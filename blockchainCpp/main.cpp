@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
   block->Mine();
 
   // Print out the hash
-  cout <<  block->CreateHash() << endl;
+  cout <<  block->GetHash() << endl;
 
   // Create a second block
   unique_ptr<Block> block2 = unique_ptr<Block>(new Block("Block 2"));
@@ -22,12 +22,13 @@ int main(int argc, char *argv[])
   bc->AddBlock(block.get());
   bc->AddBlock(block2.get());
 
-  cout <<  bc->GetLastBlock()->CreateHash() << endl;
+  cout <<  bc->GetLastBlock()->GetHash() << endl;
 
   bc->GetLastBlock()->Mine();
 
   // Show combined output
-  cout << bc->GetLastBlock()->CreateHash() << endl;
+  cout << bc->GetLastBlock()->GetHash() << endl;
+  cout << bc->GetLastBlock()->GetData() << endl;
 
 
   return 0;

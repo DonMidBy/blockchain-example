@@ -1,36 +1,71 @@
 #include "block.hpp"
 #include <chrono>
 #include <iostream>
+#include "sha256.hpp"
 
+/// Constructor
 Block::Block(string data):_data(data)
 {
    this->_timestamp = to_string(std::chrono::system_clock::now().time_since_epoch().count());
+   CreateHash();
 }
 
-size_t Block::CreateHash(){
-  string accumulated_string = to_string(this->_nonce) + this->_timestamp +
-      this->_data + (this->_prevBlock != nullptr ? to_string(this->_prevBlock->CreateHash()): "");
-
-  return hash<string>{}(accumulated_string);
+/// Returns this block's hash
+string Block::GetHash() const{
+  return _hash;
 }
 
+/// Creates a hash from this and the previous block
+string Block::CreateHash() const{
+  string accumulated_string = to_string(_nonce) + _timestamp +
+        _data + (_prevBlock != nullptr ? _prevBlock->GetHash(): "");
+
+  // Create a non-const char*
+  char* cstr = new char[accumulated_string.length() + 1];
+  strcpy(cstr, accumulated_string.c_str());
+
+  return SHA256(cstr);
+}
+
+/// Sets the previous block
 void Block::SetPrevBlock(Block *block){
-  this->_prevBlock = block;
+  _prevBlock = block;
 }
 
-bool Block::IsValid(){
-  string hashed = to_string(this->CreateHash());
-  if(hashed.at(0) == '1' && hashed.at(1) == '1' && hashed.at(2) == '1' && hashed.at(3) == '1'
-     && hashed.at(5) == '1' && hashed.at(6) == '1' && hashed.at(7) == '1' ){
+/// Checks if the block is valid
+bool Block::IsValid(uint16_t difficulty){
+
+  string hashed = GetHash();
+
+  if(hashed.length() == 0)return false;
+
+  char require[difficulty + 1];
+  for(int i = 0; i < difficulty; ++i){
+    require[i] = '0';
+  }
+  require[difficulty+1] = '\0';
+  string require_str = string(require);
+
+  // Check if the first few digits are all zeros
+  if(hashed.substr(0, difficulty) == require_str.substr(0, difficulty)){
     return true;
   }
   else return false;
 }
 
 void Block::Mine(){
-  this->_nonce = 0;
-  while(!IsValid()){
-    this->_nonce ++;
+
+  _nonce = 0;
+  _hash = CreateHash();
+  while(!IsValid(4)){
+    _nonce ++;
+    _hash = CreateHash();
   }
-  std::cout << "Nonce = " << this->_nonce << std::endl;
+  std::cout << "Nonce = " << _nonce << std::endl;
+}
+
+string Block::GetData(){
+  string data;
+  if(_prevBlock != nullptr) data = _prevBlock->GetData();
+  return data + " " + _data;
 }

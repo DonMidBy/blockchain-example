@@ -13,6 +13,8 @@ chrono
 -
 iostream
 -
+sha256.hpp
+/home/andy/blockchain_code/blockchain-example/blockchainCpp/sha256.hpp
 
 /home/andy/blockchain_code/blockchain-example/blockchainCpp/block.hpp
 string
@@ -20,5 +22,13 @@ string
 memory
 -
 functional
+-
+
+/home/andy/blockchain_code/blockchain-example/blockchainCpp/sha256.hpp
+iostream
+-
+string.h
+-
+stdlib.h
 -
 

@@ -15,10 +15,10 @@ public:
   Block(string data = "");
 
   /*!
-   * \brief CreateHash
-   * \return The hash as long integer
+   * \brief Returns this block's hash
+   * \return SHA-256 hash
    */
-  size_t CreateHash();
+  string GetHash() const;
 
   /*!
    * \brief Sets the previous block
@@ -31,20 +31,27 @@ public:
    *        0000abcderfgt
    * \return
    */
-  bool IsValid();
+  bool IsValid(uint16_t difficulty);
 
   /*!
    * \brief Mines the block
    */
   void Mine();
 
+  string GetData();
+
 private:
-  int _nonce; /// The counter for mining
+  int64_t _nonce; /// The counter for mining
   string _timestamp; /// The timestamp of creation
   string _data; /// The smart contract
   string _hash; /// The current hash
   Block* _prevBlock = nullptr; /// The previous block. The first block in a chain is null.
 
+  /*!
+   * \brief CreateHash
+   * \return The sha-256 hash as a string
+   */
+  string CreateHash() const;
 
 };
 
